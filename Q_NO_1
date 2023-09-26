@@ -1,0 +1,52 @@
+1. The feature responsible for generating Regex objects in Python is the `re` module.
+
+2. Raw strings (often denoted with an 'r' prefix) are used in Regex objects to avoid unwanted escape sequences. In regular Python strings, backslashes (\) are used for escaping special characters, but in regex patterns, backslashes are often used to escape metacharacters. Using a raw string (e.g., `r'\d'`) ensures that backslashes are treated as literal characters in the regex pattern and not as escape characters.
+
+3. The `search()` method in Python's `re` module returns a match object if a match is found in the string, and `None` if no match is found.
+
+4. To get the actual strings that match the pattern from a Match object, you can use the `group()` method with the argument `0`. For example, `match.group(0)` would return the entire matched string.
+
+5. In the regex `r'(\d\d\d)-(\d\d\d-\d\d\d\d)'`, group 0 covers the entire matched string, group 1 covers the first three digits inside parentheses, and group 2 covers the second part of the pattern, which is a string in the format "###-####."
+
+6. To tell a regex that you want to match real parentheses and periods, you can escape them using a backslash (\). For example, to match a literal parenthesis, you would use `\(`, and to match a literal period, you would use `\.` in your regex pattern.
+
+7. The `findall()` method in Python's `re` module returns a list of strings when there are no capturing groups in the regex pattern. However, if there are capturing groups, it returns a list of tuples, where each tuple contains the matched groups.
+
+8. In standard expressions, the `|` character is used to denote the logical OR operation. It allows you to specify multiple alternative patterns in a regex, and it matches any of the patterns.
+
+9. In regular expressions, the dot character `.` stands for any single character except a newline. It's often used as a wildcard to match any character in a pattern.
+
+10. In regular expressions, the `+` character means "one or more" of the preceding element. It requires that the preceding character or group must appear at least once in the input. On the other hand, the `*` character means "zero or more" of the preceding element, allowing it to match even if the preceding element is absent in the input.
+
+11. `{4}` in a regular expression specifies that the preceding element should be matched exactly 4 times. `{4,5}` specifies a range, meaning the preceding element should be matched between 4 and 5 times (inclusive).
+
+12. In regular expressions, `\d` represents a shorthand character class for digits (equivalent to `[0-9]`), `\w` represents word characters (letters, digits, or underscores, equivalent to `[a-zA-Z0-9_]`), and `\s` represents whitespace characters (spaces, tabs, newlines, etc.).
+
+13. In regular expressions, `\D` represents the negation of the `\d` shorthand character class and matches any character that is not a digit. Similarly, `\W` represents the negation of the `\w` shorthand character class and matches any character that is not a word character. `\S` represents the negation of the `\s` shorthand character class and matches any character that is not a whitespace character.
+
+14. The difference between `.*?` and `.*` in regular expressions lies in their greediness:
+
+   - `.*?` is a non-greedy or lazy quantifier. It matches as few characters as possible while still allowing the rest of the pattern to match. It will match the shortest possible string.
+   - `.*` is a greedy quantifier. It matches as many characters as possible while still allowing the rest of the pattern to match. It will match the longest possible string.
+
+15. To match both numbers and lowercase letters with a character class, you can use `[0-9a-z]` or `[a-z0-9]` within the character class. For example, `[0-9a-z]` will match any digit or lowercase letter.
+
+16. To make a regular expression case insensitive in Python, you can use the `re.IGNORECASE` flag (or `re.I`) as the second argument when calling `re.compile()`. For example:
+   
+   ```python
+   pattern = re.compile(r'your_pattern_here', re.IGNORECASE)
+   ```
+
+17. The `.` character in a regular expression normally matches any character except a newline. However, if `re.DOTALL` is passed as the second argument in `re.compile()`, it makes the `.` character match any character, including a newline.
+
+18. If `numRegex = re.compile(r'\d+')`, then `numRegex.sub('X', '11 drummers, 10 pipers, five rings, 4 hen')` will return `'X drummers, X pipers, five rings, X hen'`. It replaces all sequences of digits with 'X' in the input string.
+
+19. Passing `re.VERBOSE` as the second argument to `re.compile()` allows you to write more readable regular expressions by ignoring whitespace and adding comments. This flag enables you to format your regex pattern with line breaks and comments to make it easier to understand without affecting the pattern's functionality.
+
+20. To match a number with a comma for every three digits, you can use the following regex pattern:
+
+   ```python
+   pattern = r'\d{1,3}(,\d{3})*'
+   ```
+
+   This pattern will match numbers like '42', '1,234', and '6,368,745'. It matches one to three digits, followed by zero or more groups of a comma followed by exactly three digits.
